@@ -1,0 +1,24 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "build": true,
+    "coverage": true,
+    "node_modules": true,
+    ".eslintcache": true,
+    "package-lock.json": true
+  },
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "typescript.preferences.quoteStyle": "single"
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "typescript.preferences.quoteStyle": "single"
+  },
+  "typescript.format.semicolons": "insert",
+  "typescript.preferences.preferTypeOnlyAutoImports": true
+}
