@@ -5,7 +5,7 @@ const DESCRIPTION = 'Enforce component props types to be defined and imported fr
 const MESSAGE = 'Component props type must be defined as a named type (e.g., `Props`) and should be imported or defined externally';
 
 const createRule = ESLintUtils.RuleCreator(
-  (name) => ''
+  (name) => 'none'
 );
 
 const rule = createRule({
@@ -64,5 +64,13 @@ const rule = createRule({
 export = {
   rules: {
     'no-inline-props': rule,
+  },
+  configs: {
+    recommended: {
+      files: ["**/*.ts", "**/*.tsx"],
+      rules: {
+        'no-inline-props/no-inline-props': 'error',
+      },
+    },
   },
 };
