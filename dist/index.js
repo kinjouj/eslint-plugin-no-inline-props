@@ -50,11 +50,14 @@ const rule = createRule({
     }
 });
 module.exports = {
+    rules: {
+        'no-inline-props': rule,
+    },
     configs: {
         recommended: {
             files: ["**/*.ts", "**/*.tsx"],
             rules: {
-                'no-inline-props/no-inline-props': rule,
+                'no-inline-props/no-inline-props': 'error',
             },
         },
     },
