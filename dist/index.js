@@ -2,7 +2,7 @@
 const utils_1 = require("@typescript-eslint/utils");
 const DESCRIPTION = 'Enforce component props types to be defined and imported from a separate file (e.g., Component.types.ts) instead of inline.';
 const MESSAGE = 'Component props type must be defined as a named type (e.g., `Props`) and should be imported or defined externally';
-const createRule = utils_1.ESLintUtils.RuleCreator((name) => '');
+const createRule = utils_1.ESLintUtils.RuleCreator((name) => 'none');
 const rule = createRule({
     name: 'no-inline-props',
     defaultOptions: [],
@@ -50,7 +50,12 @@ const rule = createRule({
     }
 });
 module.exports = {
-    rules: {
-        'no-inline-props': rule,
+    configs: {
+        recommended: {
+            files: ["**/*.ts", "**/*.tsx"],
+            rules: {
+                'no-inline-props/no-inline-props': rule,
+            },
+        },
     },
 };
