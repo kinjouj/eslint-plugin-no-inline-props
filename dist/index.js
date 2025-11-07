@@ -49,16 +49,24 @@ const rule = createRule({
         };
     }
 });
-module.exports = {
+const plugin = {
     rules: {
         'no-inline-props': rule,
     },
     configs: {
         recommended: {
             files: ["**/*.ts", "**/*.tsx"],
+            plugins: {
+                'my-plugin': {
+                    rules: {
+                        'no-inline-props': rule,
+                    },
+                },
+            },
             rules: {
-                'no-inline-props': 'error',
+                'my-plugin/no-inline-props': 'error',
             },
         },
     },
 };
+module.exports = plugin;
