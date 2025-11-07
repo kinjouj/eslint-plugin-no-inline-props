@@ -50,9 +50,6 @@ const rule = createRule({
     }
 });
 const plugin = {
-    rules: {
-        'no-inline-props': rule,
-    },
     configs: {
         recommended: {
             files: ["**/*.ts", "**/*.tsx"],
