@@ -57,14 +57,14 @@ const plugin = {
         recommended: {
             files: ["**/*.ts", "**/*.tsx"],
             plugins: {
-                'my-plugin': {
+                'inline-props-linter': {
                     rules: {
                         'no-inline-props': rule,
                     },
                 },
             },
             rules: {
-                'my-plugin/no-inline-props': 'error',
+                'inline-props-linter/no-inline-props': 'error',
             },
         },
     },
