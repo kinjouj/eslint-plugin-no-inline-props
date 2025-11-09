@@ -25,19 +25,23 @@ const rule = createRule({
             if ("typeAnnotation" in propsParam && propsParam.typeAnnotation) {
                 const typeAnnotation = propsParam.typeAnnotation.typeAnnotation;
                 if (typeAnnotation.type === utils_1.AST_NODE_TYPES.TSTypeLiteral) {
-                    context.report({
-                        node: propsParam.typeAnnotation,
-                        messageId: 'noInlineProps',
-                    });
-                    return;
-                }
-                if (propsParam.type === utils_1.AST_NODE_TYPES.ObjectPattern && propsParam.typeAnnotation) {
-                    const typeAnnotation = propsParam.typeAnnotation.typeAnnotation;
-                    if (typeAnnotation.type === utils_1.AST_NODE_TYPES.TSTypeLiteral) {
+                    if (typeAnnotation.members.length > 1) {
                         context.report({
                             node: propsParam.typeAnnotation,
                             messageId: 'noInlineProps',
                         });
+                        return;
+                    }
+                }
+                if (propsParam.type === utils_1.AST_NODE_TYPES.ObjectPattern && propsParam.typeAnnotation) {
+                    const typeAnnotation = propsParam.typeAnnotation.typeAnnotation;
+                    if (typeAnnotation.type === utils_1.AST_NODE_TYPES.TSTypeLiteral) {
+                        if (typeAnnotation.members.length > 1) {
+                            context.report({
+                                node: propsParam.typeAnnotation,
+                                messageId: 'noInlineProps',
+                            });
+                        }
                     }
                 }
             }

@@ -33,21 +33,25 @@ const rule = createRule({
         const typeAnnotation = propsParam.typeAnnotation.typeAnnotation;
 
         if (typeAnnotation.type === AST_NODE_TYPES.TSTypeLiteral) {
-          context.report({
-            node: propsParam.typeAnnotation,
-            messageId: 'noInlineProps',
-          });
-          return;
+          if (typeAnnotation.members.length > 1) {
+            context.report({
+              node: propsParam.typeAnnotation,
+              messageId: 'noInlineProps',
+            });
+            return;
+          }
         }
  
         if (propsParam.type === AST_NODE_TYPES.ObjectPattern && propsParam.typeAnnotation) {
           const typeAnnotation = propsParam.typeAnnotation.typeAnnotation;
 
           if (typeAnnotation.type === AST_NODE_TYPES.TSTypeLiteral) {
-            context.report({
-              node: propsParam.typeAnnotation,
-              messageId: 'noInlineProps',
-            });
+            if (typeAnnotation.members.length > 1 ) {
+              context.report({
+                node: propsParam.typeAnnotation,
+                messageId: 'noInlineProps',
+              });
+            }
           }
         }
       }
